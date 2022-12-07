@@ -5,7 +5,15 @@
 - Build this project off `FASTAPI`- `fastapi.tiangolo.com`.
 - Packages for FASTAPI - `pip install fastapi` && `pip install "uvicorn[standard]"`.
 - OR install all packages at once with `pip install "fastapi[all]"`.
-- Start the server with uvicorn: `uvicorn app.main:app --reload`.
+- Start the server with for SQL queries: `uvicorn app.mainsql:app --reload`.
+- Start the server with for NO-SQL queries: `uvicorn app.mainnosql:app --reload`.
 - The pydantic library is used for data validation when creating schemas in a python application.
 - Create a python package use `__init__.py` in the folder of choose.
-- Psycopg driver for PostgresSQL to implement a complete Python DB API NOT for windows  `sudo apt install python3-dev libpq-dev`then `pip install psycopg2`.
+- Psycopg driver for PostgresSQL to implement a complete Python DB API NOT for windows
+  ```
+  sudo apt install python3-dev libpq-dev && pip install psycopg2 
+  
+  ```
+### Object Relational Mapper-ORM
+- Using `sqlalchemy` and `psycopg2` drivers to access data from the database.
+- 
