@@ -3,8 +3,6 @@ from datetime import datetime
 
 # Created a schema from pydantic defines the structure
 # This is for validation of data from the server.
-
-
 class Post(BaseModel):
     title: str
     content: str
