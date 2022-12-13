@@ -8,7 +8,7 @@ import os
 import time
 from dotenv import load_dotenv
 
-from .routers import post, user
+from .routers import post, user, auth
 
 
 # Call to create table for the database
@@ -48,3 +48,4 @@ while True:
 
 app.include_router(post.router)
 app.include_router(user.router)
+app.include_router(auth.router)
