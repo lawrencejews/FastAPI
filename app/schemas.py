@@ -1,8 +1,9 @@
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
+from typing import Optional
 
 # Created a schema from pydantic defines the structure
-# This is for validation of data from the server.
+# This is for validation of data from the server [I/O].
 class Post(BaseModel):
     title: str
     content: str
@@ -43,3 +44,12 @@ class UserOut(BaseModel):
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
+
+
+class Token(BaseModel):
+    access_token: str 
+    token_type: str 
+
+
+class TokenData(BaseModel):
+    id: Optional[str] = None
