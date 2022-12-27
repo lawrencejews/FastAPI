@@ -9,7 +9,7 @@ router = APIRouter(prefix="/posts", tags=["Posts"])
 
 
 # Get all post from postgres
-@router.get("/", response_model=List[schemas.PostResponse])
+@router.get("/", response_model=List[schemas.PostResponse]) 
 def get_posts(db: Session = Depends(get_db), 
 current_user: int = Depends(oauth2.get_current_user)):
 
