@@ -1,6 +1,7 @@
 from pydantic import BaseModel, EmailStr
 from datetime import datetime
 from typing import Optional
+from pydantic.types import conint
 
 # Created a schema from pydantic defines the structure
 # This is for validation of data from the server [I/O].
@@ -55,3 +56,8 @@ class PostResponse(PostBase):
 
     class Config:
         orm_mode = True
+
+
+class Vote(BaseModel):
+    post_id: int 
+    dir: conint(le=1)
