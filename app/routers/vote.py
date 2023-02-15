@@ -3,18 +3,16 @@ from sqlalchemy.orm import Session
 from .. import schemas, database, models, oauth2
 
 
-router = APIRouter(
-    prefix="/vote",
-    tags=["Vote"]
-)
+router = APIRouter(prefix="/vote", tags=["Vote"])
 
 
 @router.post('/', status_code=status.HTTP_201_CREATED)
 def vote(vote: schemas.Vote, db: Session = Depends(database.get_db), current_user: int = Depends(oauth2.get_current_user)):
-    
+
     post = db.query(models.Post).filter(models.Post.id == vote.post_id).first()
     if not post:
-      raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Post with id: {vote.post_id} does not exist") 
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"Post with id: {vote.post_id} does not exist")
 
     # Queries who has voted on a website among users
     vote_query = db.query(models.Vote).filter(models.Vote.post_id ==
@@ -35,7 +33,7 @@ def vote(vote: schemas.Vote, db: Session = Depends(database.get_db), current_use
         if not found_vote:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND, detail="Vote does not exist")
-        
+
         vote_query.delete(synchronize_session=False)
         db.commit()
 

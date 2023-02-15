@@ -5,6 +5,8 @@ from pydantic.types import conint
 
 # Created a schema from pydantic defines the structure
 # This is for validation of data from the server [I/O].
+
+
 class UserCreate(BaseModel):
     email: EmailStr
     password: str
@@ -51,13 +53,21 @@ class PostCreate(PostBase):
 class PostResponse(PostBase):
     id: int
     created_at:  datetime
-    owner_id: int 
+    owner_id: int
     owner: UserOut
 
     class Config:
         orm_mode = True
 
 
+class PostOut(PostBase):
+    Post: Post
+    votes: int
+
+    class Config:
+        orm_mode = True
+
+
 class Vote(BaseModel):
-    post_id: int 
+    post_id: int
     dir: conint(le=1)
