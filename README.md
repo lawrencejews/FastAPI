@@ -1,5 +1,5 @@
 ### FastAPI - Python API Development.
-
+![FastAPI](fastapi.png)
 #### NOTE - creating a user is key to use this repo: 
 - First create a user for login to access the endpoints OR you will get `Not Authenticated Error`.
 
